@@ -1,415 +1,301 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harlem Plaza Redesign – Midterm</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<body>
+html {
+    scroll-behavior: smooth;
+}
 
-    <!-- Navigation -->
-    <header class="header">
-        <div class="logo">Harlem Plaza Redesign</div>
-        <nav class="nav">
-            <a href="#home">Home</a>
-            <a href="#research">Research</a>
-            <a href="#users">Users & Problems</a>
-            <a href="#ai">AI Exploration</a>
-            <a href="#proposal">Final Proposal</a>
-            <a href="#budget">Budget</a>
-        </nav>
-    </header>
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    background: url("https://i.pinimg.com/originals/58/ba/e0/58bae04196329e25ec7a2136db50b729.gif") center/cover fixed no-repeat;
+    color: white;
+    position: relative;
+}
 
-    <!-- Landing Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 id="typing"></h1>
-            <p>
-                A redesign proposal focused on improving community experience,
-                thermal comfort, movement, safety, and public activation.
-            </p>
-            <a href="#research" class="btn">Explore Project</a>
-        </div>
-    </section>
+/* overlay for readability */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
 
-    <!-- Research Section -->
-    <section id="research" class="section reveal">
-        <h2>Research & Context</h2>
-        <p>
-            Harlem Plaza, also known as Montefiore Square, is an important public
-            space in Hamilton Heights that serves residents, subway commuters,
-            students, small businesses, and visitors. This proposal studies how the
-            plaza currently functions and identifies what still needs improvement
-            after its 2022 renovation.
-        </p>
+/* floating glow */
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,255,140,0.2), transparent);
+    top: 20%;
+    left: -100px;
+    filter: blur(40px);
+    animation: floatGlow 8s ease-in-out infinite alternate;
+    z-index: -1;
+}
 
-        <div class="grid">
-            <div class="card">
-                <h3>Site Analysis</h3>
-                <p>
-                    Harlem Plaza (Montefiore Square) is a triangular public space in
-                    Hamilton Heights, West Harlem, bounded by Broadway, W 138th Street,
-                    and Hamilton Place. The 137th Street–City College 1-train stop is
-                    located at the southern edge of the plaza, while City College of New
-                    York sits one block to the northeast.
-                </p>
-                <p>
-                    The site received a major $18.4 million renovation in 2022 that
-                    expanded its footprint and introduced 36 new trees. Even with these
-                    improvements, several issues remain unresolved: the open paved areas
-                    still lack overhead shade, seating options are limited, and the plaza
-                    does not provide enough reasons for people to stay and gather.
-                </p>
-                <p>
-                    Approximately 40,000 residents live within a 10-minute walk of the
-                    plaza, making it one of the most accessible neighborhood public spaces
-                    in upper Manhattan.
-                </p>
-            </div>
+/* ================= HEADER ================= */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(12px);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
 
-            <div class="card">
-                <h3>Key Findings</h3>
-                <p>
-                    The site analysis revealed three major problems. First, the lack of
-                    shade makes the plaza uncomfortable during summer afternoons, and the
-                    newly planted trees will take years to provide meaningful canopy
-                    coverage. Second, the fixed granite seat walls offer only one type of
-                    seating experience and do not support flexibility, comfort, or social
-                    interaction.
-                </p>
-                <p>
-                    Third, the plaza has almost no programming infrastructure. There is
-                    no designated event area, no built-in support for temporary markets,
-                    and no strong features that encourage people to remain in the space.
-                    As a result, the plaza functions more as a pass-through zone than as
-                    a destination for community use.
-                </p>
-            </div>
-        </div>
-    </section>
+.logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
 
-    <!-- Users & Problems -->
-    <section id="users" class="section alt reveal">
-        <h2>Users & Problems</h2>
-        <p>
-            The redesign responds to the needs of several user groups who rely on the
-            plaza in different ways. Each group experiences the site differently, but
-            all are affected by the plaza’s current limitations in comfort, safety,
-            and activation.
-        </p>
+.nav {
+    display: flex;
+    gap: 15px;
+}
 
-        <div class="grid">
-            <div class="card">
-                <h3>Primary Users</h3>
+.nav a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
 
-                <h4>Local Residents</h4>
-                <p>
-                    Hamilton Heights includes strong Dominican-American, West African,
-                    and African-American communities. Long-term residents need a plaza
-                    that feels welcoming, culturally grounded, and usable for daily life.
-                    Senior residents especially need shaded areas, ADA-friendly seating,
-                    and smooth pathways.
-                </p>
+.nav a:hover {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
 
-                <h4>Commuters</h4>
-                <p>
-                    The nearby 137th Street subway station creates heavy daily pedestrian
-                    traffic. Commuters mainly use the plaza as a circulation space, so
-                    they need clear paths, easy visibility, and safer crossings. Even
-                    short visits would improve with better shade and wayfinding.
-                </p>
+/* ================= HERO (UPDATED) ================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
 
-                <h4>Small Business Owners</h4>
-                <p>
-                    Businesses along Broadway would benefit from a plaza that encourages
-                    people to linger rather than simply pass through. A more active plaza
-                    could support local vendors, increase foot traffic, and strengthen
-                    the relationship between the public space and the commercial edge.
-                </p>
+/* hero overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
 
-                <h4>Visitors</h4>
-                <p>
-                    Visitors, including first-time neighborhood users and students from
-                    nearby City College, need a plaza that clearly communicates its local
-                    identity. The design should help them understand that this is a
-                    specific Harlem community space rather than a generic urban plaza.
-                </p>
-            </div>
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s ease;
+}
 
-            <div class="card">
-                <h3>Core Problems</h3>
+.hero h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 15px white;
+    animation: glowPulse 3s infinite;
+}
 
-                <h4>Lack of Safe Pedestrian Movement</h4>
-                <p>
-                    The triangular geometry of the plaza creates multiple crossing points
-                    where pedestrians and turning vehicles come into conflict. During rush
-                    periods, this becomes especially difficult for subway riders and
-                    students moving quickly through the area.
-                </p>
+.hero p {
+    margin-bottom: 20px;
+}
 
-                <h4>Insufficient Seating and Comfort Zones</h4>
-                <p>
-                    The current granite seat walls are durable, but they provide only one
-                    fixed seating option. Users cannot move chairs into the shade, face
-                    each other socially, or choose where to sit based on comfort and
-                    activity.
-                </p>
+/* button */
+.btn {
+    padding: 12px 25px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.3);
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
 
-                <h4>Limited Visibility and Lighting</h4>
-                <p>
-                    During the evening, the plaza depends mostly on standard street
-                    lighting. This leaves interior seating and gathering areas in shadow,
-                    reducing the sense of safety and making the plaza less usable after
-                    dark.
-                </p>
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
 
-                <h4>Underutilized Public Space</h4>
-                <p>
-                    Although the renovation improved the physical layout, the plaza still
-                    lacks features that encourage staying. Without flexible seating, shade,
-                    and programming, most users spend only a short amount of time there
-                    before moving on.
-                </p>
-            </div>
-        </div>
-    </section>
+/* ================= SECTIONS ================= */
+.section {
+    padding: 100px 60px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    animation: fadeUp 1s ease;
+}
 
-    <!-- AI Image Exploration -->
-    <section id="ai" class="section reveal">
-        <h2>AI-Assisted Image Exploration</h2>
-        <p>
-            These concept images were generated using DALL·E to explore different design
-            directions for the Harlem Plaza redesign. Each image helped test possible
-            solutions for comfort, planting, activation, and neighborhood identity.
-        </p>
+.section.alt {
+    background: rgba(0,0,0,0.5);
+}
 
-        <div class="image-grid">
-            <figure class="image-card">
-                <img src="ChatGPT Image Apr 8, 2026, 11_56_15 PM.png" alt="AI Concept 1" />
-                <figcaption>
-                    <strong>Concept 1:</strong> This image explores a greener and more
-                    planted version of the plaza with stronger tree coverage and layered
-                    landscape edges. It responds mainly to the lack of shade and thermal
-                    comfort. What works well is the welcoming atmosphere, but the image
-                    feels slightly too suburban and would need a denser, more urban Harlem
-                    character.
-                </figcaption>
-            </figure>
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
 
-            <figure class="image-card">
-                <img src="ChatGPT Image Apr 9, 2026, 12_11_03 AM.png" alt="AI Concept 2" />
-                <figcaption>
-                    <strong>Concept 2:</strong> This direction focuses more on social use
-                    and public activation, showing the plaza as a place where people gather,
-                    sit, and interact. It addresses the problems of underused public space
-                    and lack of flexible seating. I like the energy of this version, but it
-                    would need stronger wayfinding and more visible ties to the surrounding
-                    neighborhood.
-                </figcaption>
-            </figure>
+/* ================= GRID ================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
 
-            <figure class="image-card">
-                <img src="Sunny city park and lively street.png" alt="AI Concept 3" />
-                <figcaption>
-                    <strong>Concept 3:</strong> This image combines planting, seating, and
-                    an active street edge to imagine a more lively and multifunctional plaza.
-                    It begins to address both comfort and activation at the same time. What
-                    works is the liveliness, but the final design should feel more specific
-                    to Harlem and less like a generic city park.
-                </figcaption>
-            </figure>
-        </div>
-    </section>
+/* ================= CARDS ================= */
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    transition: 0.4s;
+}
 
-    <!-- Final Proposal -->
-    <section id="proposal" class="section alt reveal">
-        <h2>Final Redesign Proposal</h2>
-        <p>
-            The final proposal combines the strongest ideas from the earlier explorations
-            into one realistic redesign strategy for Harlem Plaza. The goal is not to
-            completely rebuild the plaza, but to strengthen the 2022 renovation with
-            additions that improve comfort, flexibility, and community use.
-        </p>
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(0,255,140,0.3);
+}
 
-        <div class="grid">
-            <div class="card">
-                <h3>Design Strategy</h3>
-                <p>
-                    The proposal introduces three major interventions. First, tensile shade
-                    sails are installed over the most active seating and circulation zones
-                    to provide immediate relief from summer heat while the young trees
-                    continue to grow. Second, moveable café-style seating and small tables
-                    are added to the central paved area so users can choose how they want
-                    to occupy the space.
-                </p>
-                <p>
-                    Third, the redesign creates a flexible cultural activation zone for
-                    temporary markets, neighborhood events, student gatherings, and public
-                    programming. Together, these improvements transform the plaza from a
-                    space people move through into a place where people can pause, gather,
-                    and participate.
-                </p>
-            </div>
+/* ================= IMAGE GRID ================= */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
 
-            <div class="card">
-                <h3>Final Visuals</h3>
-                <p>
-                    The final concept image would synthesize the best features of the
-                    previous AI explorations: overhead shade sails, moveable seating,
-                    stronger planting, warm evening lighting, and a flexible market/event
-                    area. This combined direction creates a plaza that feels comfortable,
-                    active, and culturally connected to the Harlem neighborhood.
-                </p>
-                <p>
-                    <strong>Suggested image prompt:</strong> “Harlem NYC plaza redesign
-                    tensile shade sails moveable cafe seating outdoor vendor market
-                    community gathering warm lighting urban.”
-                </p>
-                <p>
-                    Once generated, this image should be presented as the final synthesis
-                    of the project’s research, user analysis, and AI-assisted concept
-                    development.
-                </p>
-            </div>
-        </div>
-    </section>
+/* ================= NEON IMAGE CARD ================= */
+.image-card {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    padding: 2px;
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 0 12px rgba(255,255,255,0.2),
+        0 0 20px rgba(0,255,140,0.2);
+    transition: 0.4s;
+}
 
-    <!-- Budget -->
-    <section id="budget" class="section alt reveal">
-        <h2>Conceptual Budget</h2>
-        <p>
-            This preliminary budget estimates the cost of key interventions proposed for
-            the plaza redesign. These figures are conceptual and intended to show how the
-            design could be implemented in phases through public and partnership funding.
-        </p>
+/* animated border */
+.image-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 24px;
+    background: conic-gradient(
+        from 0deg,
+        #00ff88,
+        #ffffff,
+        #00ff88,
+        #ffffff,
+        #00ff88
+    );
+    animation: spinBorder 4s linear infinite, neonPulse 2.5s ease-in-out infinite;
+    z-index: -2;
+    filter: blur(12px);
+}
 
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Intervention</th>
-                        <th>Concept Estimate</th>
-                        <th>Possible Funding Source</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tensile shade sails (3 large sails, seasonal)</td>
-                        <td>$30,000 – $55,000</td>
-                        <td>NYC Parks discretionary / Council Member capital</td>
-                    </tr>
-                    <tr>
-                        <td>Moveable café seating (60 chairs + 15 tables)</td>
-                        <td>$15,000 – $25,000</td>
-                        <td>NYC Parks / BID partnership</td>
-                    </tr>
-                    <tr>
-                        <td>Vendor market zone (paving + electrical)</td>
-                        <td>$25,000 – $45,000</td>
-                        <td>NYC SBS Small Business grants</td>
-                    </tr>
-                    <tr>
-                        <td>Bilingual wayfinding signage</td>
-                        <td>$7,000 – $13,000</td>
-                        <td>NYC DOT Pedestrian Wayfinding</td>
-                    </tr>
-                    <tr>
-                        <td>Evening lighting enhancements</td>
-                        <td>$10,000 – $20,000</td>
-                        <td>Council Member discretionary</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td>Total conceptual range</td>
-                        <td>$87,000 – $158,000</td>
-                        <td>Multiple sources, Phase 1–2</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+/* inner glass */
+.image-card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    z-index: -1;
+}
 
-    <!-- Lightbox -->
-    <div id="lightbox">
-        <img id="lightbox-img" src="" alt="Expanded concept image" />
-    </div>
+/* image */
+.image-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: 0.4s;
+}
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2026 Harlem Plaza Redesign – Academic Project</p>
-    </footer>
+/* hover */
+.image-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow:
+        0 0 25px white,
+        0 0 50px #00ff88;
+}
 
-    <script>
-        /* typing effect */
-        const text = "Reimagining Harlem Plaza";
-        let i = 0;
+.image-card:hover img {
+    transform: scale(1.05);
+}
 
-        function type() {
-            if (i < text.length) {
-                document.getElementById("typing").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, 60);
-            }
-        }
-        type();
+/* caption */
+.image-card figcaption {
+    padding: 15px;
+}
 
-        /* scroll reveal */
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll(".reveal");
+/* ================= TABLE ================= */
+table {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border-collapse: collapse;
+}
 
-            reveals.forEach((el) => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
+th, td {
+    padding: 15px;
+}
 
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add("active");
-                }
-            });
-        }
+tbody tr:hover {
+    background: rgba(255,255,255,0.1);
+}
 
-        window.addEventListener("scroll", revealOnScroll);
-        window.addEventListener("load", revealOnScroll);
+/* ================= FOOTER ================= */
+.footer {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0,0,0,0.8);
+}
 
-        /* active nav highlight */
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav a");
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
 
-        window.addEventListener("scroll", () => {
-            let current = "";
+@keyframes glowPulse {
+    0%,100% {text-shadow: 0 0 10px white;}
+    50% {text-shadow: 0 0 25px white;}
+}
 
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop - 140;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute("id");
-                }
-            });
+@keyframes floatGlow {
+    from {transform: translateY(0);}
+    to {transform: translateY(40px);}
+}
 
-            navLinks.forEach((a) => {
-                a.classList.remove("active");
-                if (a.getAttribute("href") === "#" + current) {
-                    a.classList.add("active");
-                }
-            });
-        });
+@keyframes spinBorder {
+    to {transform: rotate(360deg);}
+}
 
-        /* image lightbox */
-        const images = document.querySelectorAll(".image-card img");
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
+@keyframes neonPulse {
+    0%,100% {opacity: 0.7;}
+    50% {opacity: 1;}
+}
 
-        images.forEach((img) => {
-            img.addEventListener("click", () => {
-                lightbox.style.display = "flex";
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-            });
-        });
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .section {
+        padding: 80px 25px;
+    }
 
-        lightbox.addEventListener("click", () => {
-            lightbox.style.display = "none";
-        });
-    </script>
-
-</body>
-</html>
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
