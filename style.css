@@ -17,7 +17,7 @@ body {
     position: relative;
 }
 
-/* dark overlay */
+/* overlay for readability */
 body::before {
     content: "";
     position: fixed;
@@ -26,16 +26,16 @@ body::before {
     z-index: -1;
 }
 
-/* animated glow blob */
+/* floating glow */
 body::after {
     content: "";
     position: fixed;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(0,255,140,0.15), transparent);
+    background: radial-gradient(circle, rgba(0,255,140,0.2), transparent);
     top: 20%;
     left: -100px;
-    filter: blur(30px);
+    filter: blur(40px);
     animation: floatGlow 8s ease-in-out infinite alternate;
     z-index: -1;
 }
@@ -77,17 +77,29 @@ body::after {
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (UPDATED) ================= */
 .hero {
     height: 100vh;
-    background: url('ChatGPT Image Apr 8, 2026, 11_53_44 PM.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 40px;
     text-align: center;
+    color: white;
+    position: relative;
+}
+
+/* hero overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
 }
 
 .hero-content {
+    position: relative;
+    z-index: 1;
     animation: fadeUp 1s ease;
 }
 
@@ -97,6 +109,11 @@ body::after {
     animation: glowPulse 3s infinite;
 }
 
+.hero p {
+    margin-bottom: 20px;
+}
+
+/* button */
 .btn {
     padding: 12px 25px;
     background: rgba(255,255,255,0.15);
@@ -170,7 +187,7 @@ body::after {
     transition: 0.4s;
 }
 
-/* animated glowing border */
+/* animated border */
 .image-card::before {
     content: "";
     position: absolute;
@@ -189,7 +206,7 @@ body::after {
     filter: blur(12px);
 }
 
-/* glass inner */
+/* inner glass */
 .image-card::after {
     content: "";
     position: absolute;
