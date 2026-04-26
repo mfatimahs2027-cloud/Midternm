@@ -169,9 +169,86 @@ body::after {
 
 /* ================= IMAGE GRID ================= */
 .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    display: flex; /* changed from grid */
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ================= NEON IMAGE CARD ================= */
+.image-card {
+    position: relative;
+    width: 260px; /* NEW: smaller size */
+    border-radius: 22px;
+    overflow: hidden;
+    padding: 2px;
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 0 12px rgba(255,255,255,0.2),
+        0 0 20px rgba(0,255,140,0.2);
+    transition: 0.4s;
+}
+
+/* animated border */
+.image-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 24px;
+    background: conic-gradient(
+        from 0deg,
+        #00ff88,
+        #ffffff,
+        #00ff88,
+        #ffffff,
+        #00ff88
+    );
+    animation: spinBorder 4s linear infinite, neonPulse 2.5s ease-in-out infinite;
+    z-index: -2;
+    filter: blur(12px);
+}
+
+/* inner glass */
+.image-card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    z-index: -1;
+}
+
+/* UPDATED IMAGE */
+.image-card img {
+    width: 100%;
+    height: 180px; /* smaller height */
+    object-fit: cover;
+    border-radius: 18px;
+    transition: 0.4s;
+
+    /* stronger glow */
+    box-shadow:
+        0 0 12px rgba(255,255,255,0.3),
+        0 0 25px rgba(0,255,140,0.5);
+}
+
+/* UPDATED HOVER */
+.image-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow:
+        0 0 35px white,
+        0 0 70px #00ff88;
+}
+
+.image-card:hover img {
+    transform: scale(1.05);
+}
+
+/* caption */
+.image-card figcaption {
+    padding: 12px;
+    font-size: 13px;
+    color: #ddd;
 }
 
 /* ================= NEON IMAGE CARD ================= */
